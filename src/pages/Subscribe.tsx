@@ -2,7 +2,8 @@ import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import { useCreateSubscriberMutation } from '../graphql/generated';
-import imgUrl from '../../src/assets/code-mockup.png'
+import codeImgUrl from '../../src/assets/code-mockup.png'
+import reactImgUrl from '../../src/assets/reactJS-icon.png'
 
 export function Subscribe() {
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ export function Subscribe() {
   return (
     <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
         <div className="w-full max-w-[1216px] flex items-center justify-between mt-20 mx-auto relative">
-        <img src="/src/assets/reactJS-icon.png" className="absolute top-[-50px] left-[calc(50%_-_327px)] "/>
+        <img src={reactImgUrl} className="absolute top-[-50px] left-[calc(50%_-_327px)]"/>
           <div className="max-w-[640px]">
           <Logo />
           <h1 className="mt-8 text-[2.5rem] leading-tight">
@@ -67,7 +68,7 @@ export function Subscribe() {
           </div>
         </div>
 
-      <img src={imgUrl} className="mt-10" alt="" />
+      <img src={codeImgUrl} className="mt-10" alt="" />
     </div>
   )
 }
