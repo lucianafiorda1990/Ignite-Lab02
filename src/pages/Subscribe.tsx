@@ -2,14 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
-
-const CREATE_SUBSCRIBER_MUTATION = gql`
-  mutation CreateSubscriber ($name: String!, $email: String!) {
-    createSubscriber(data: {name: $name, email: $email}) {
-      id
-    }
-  }
-`
+import { useCreateSubscriberMutation } from '../graphql/generated';
 
 export function Subscribe() {
   const navigate = useNavigate()
@@ -17,7 +10,7 @@ export function Subscribe() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
-  const [createSubscriber, { loading }] = useMutation(CREATE_SUBSCRIBER_MUTATION)
+  const [createSubscriber, { loading }] = useCreateSubscriberMutation()
 
   async function handleSubscribe(event: FormEvent) {
     event.preventDefault()
@@ -34,8 +27,8 @@ export function Subscribe() {
 
   return (
     <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
-      <div className="bg-react bg-no-repeat bg-top mt-[10px]">
-        <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
+        <div className="w-full max-w-[1216px] flex items-center justify-between mt-20 mx-auto relative">
+        <img src="/src/assets/reactJS-icon.png" className="absolute top-[-50px] left-[calc(50%_-_327px)] "/>
           <div className="max-w-[640px]">
           <Logo />
           <h1 className="mt-8 text-[2.5rem] leading-tight">
@@ -73,7 +66,7 @@ export function Subscribe() {
             </form>
           </div>
         </div>
-      </div>
+      
 
       <img src="/src/assets/code-mockup.png" className="mt-10" alt=""/>
     </div>
